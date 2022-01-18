@@ -29,3 +29,5 @@ class ExampleCommand
  private:
   ExampleSubsystem* m_subsystem;
 };
+
+// a command --> function refead into main fram e for later
