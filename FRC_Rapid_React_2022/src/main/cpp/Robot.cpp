@@ -3,20 +3,45 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "Robot.h"
-
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc2/command/CommandScheduler.h>
 
-void Robot::RobotInit() {}
+#include "frc/XboxController.h" 
 
-/**
- * This function is called every robot packet, no matter the mode. Use
- * this for items like diagnostics that you want to run during disabled,
- * autonomous, teleoperated and test.
- *
- * <p> This runs after the mode specific periodic functions, but before
- * LiveWindow and SmartDashboard integrated updating.
- */
+void Robot::RobotInit() {
+  
+  /**
+   * This function is called every robot packet, no matter the mode. Use
+   * this for items like diagnostics that you want to run during disabled,
+   * autonomous, teleoperated and test.
+   * <p> This runs after the mode specific periodic functions, but before
+   * LiveWindow and SmartDashboard integrated updating.
+   */
+
+
+  /** to do? 
+  *initialise xbox controller
+  * define xbox button names (assign buttons names so makes sense later on)
+
+  *set up drive motors
+  *set up network table ?
+  */
+
+  // Initialising our Xbox Controller
+  frc::XboxController::XboxController(0)// the value 0 is a guess based off the old Java Code
+
+  
+}
+
+
+current_button = XboxController::GetLeftX() 
+
+
+
+
+//------------------------------------------------------------------------------------------------
+
+
 void Robot::RobotPeriodic() {
   frc2::CommandScheduler::GetInstance().Run();
 }
