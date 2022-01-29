@@ -27,4 +27,8 @@ class Robot : public frc::TimedRobot {
   const std::string kAutoNameDefault = "Default";
   const std::string kAutoNameCustom = "My Auto";
   std::string m_autoSelected;
+  frc::XboxController m_controller;
+frc::PWMVictorSPX m_MotorLeft;
+frc::PWMVictorSPX m_MotorRight;
+frc::DifferentialDrive m_drive;
 };

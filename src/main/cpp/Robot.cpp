@@ -12,10 +12,7 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 
 
-frc::XboxController m_controller;
-frc::PWMVictorSPX m_MotorLeft;
-frc::PWMVictorSPX m_MotorRight;
-frc::DifferentialDrive m_drive;
+
 
 
 
