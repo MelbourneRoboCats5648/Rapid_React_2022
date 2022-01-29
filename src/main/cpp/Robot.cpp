@@ -4,16 +4,29 @@
 
 #include "Robot.h"
 #include <frc/XboxController.h>
+#include <frc/drive/DifferentialDrive.h>
+#include <frc/motorcontrol/PWMVictorSPX.h>
 
 #include <fmt/core.h>
 
 #include <frc/smartdashboard/SmartDashboard.h>
+
+
+frc::XboxController m_controller;
+frc::PWMVictorSPX m_MotorLeft;
+frc::PWMVictorSPX m_MotorRight;
+frc::DifferentialDrive m_drive;
+
+
 
 void Robot::RobotInit() {
   m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
   m_chooser.AddOption(kAutoNameCustom, kAutoNameCustom);
   frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
   frc::XboxController m_controller{0};
+  frc::PWMVictorSPX m_MotorLeft{1};
+  frc::PWMVictorSPX m_MotorRight{2};
+  frc::DifferentialDrive m_drive{m_MotorLeft,m_MotorRight};
 }
 
 /**
@@ -56,6 +69,7 @@ void Robot::AutonomousPeriodic() {
   } else {
     // Default Auto goes here
   }
+  
 }
 
 void Robot::TeleopInit() {}
