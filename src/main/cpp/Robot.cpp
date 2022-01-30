@@ -78,6 +78,9 @@ void Robot::TeleopPeriodic() { // repeated throughout
   // contolling arcade drive
   m_drive.ArcadeDrive(forward_input,spin_input);
 
+  // if xbox button is pressed, stop everything
+  EmergencyStop();
+
 }
 
 void Robot::DisabledInit() {}
@@ -87,7 +90,16 @@ void Robot::DisabledPeriodic() {}
 // testing stuff
 void Robot::TestInit() {}
 
-void Robot::TestPeriodic() {}
+void Robot::TestPeriodic() {
+  if (m_controller.GetRawButtonPressed(9)) fmt::print("Button 9 is pressed\n");
+  if (m_controller.GetRawButtonPressed(10)) fmt::print("Button 10 is pressed\n");
+  if (m_controller.GetRawButtonPressed(11)) fmt::print("Button 11 is pressed\n");
+  if (m_controller.GetRawButtonPressed(12)) fmt::print("Button 12 is pressed\n");
+  if (m_controller.GetRawButtonPressed(13)) fmt::print("Button 13 is pressed\n");
+  if (m_controller.GetRawButtonPressed(14)) fmt::print("Button 14 is pressed\n");
+  if (m_controller.GetRawButtonPressed(15)) fmt::print("Button 15 is pressed\n");
+  if (m_controller.GetRawButtonPressed(16)) fmt::print("Button 16 is pressed\n");
+  }
 
 
 
