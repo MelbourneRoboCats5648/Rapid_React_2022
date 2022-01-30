@@ -9,9 +9,11 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 
 
-
-
-
+void Robot::EmergencyStop() {
+  // stops all motors from moving 
+  m_motor_left.Set(0);
+  m_motor_right.Set(0);
+}
 
 void Robot::RobotInit() {
   m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
@@ -87,11 +89,11 @@ void Robot::TestInit() {}
 
 void Robot::TestPeriodic() {}
 
+
+
+//_____________________________________________________________
 #ifndef RUNNING_FRC_TESTS
 int main() {
   return frc::StartRobot<Robot>();
 }
 #endif
-
-
-//test 23rd jan

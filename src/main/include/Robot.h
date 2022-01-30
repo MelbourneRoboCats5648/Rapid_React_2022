@@ -28,18 +28,21 @@ class Robot : public frc::TimedRobot {
 
  //defining variable internal to robot --> (private)
  private:
+  void EmergencyStop();
+  // probably sending info to game controller centre
   frc::SendableChooser<std::string> m_chooser;
   const std::string kAutoNameDefault = "Default";
   const std::string kAutoNameCustom = "My Auto";
   std::string m_autoSelected;
+
   frc::XboxController m_controller{0}; //defining xbox controller (port 0)
 
   // setting up vector motor controllers (driving)
-  frc::PWMSparkMax m_MotorLeft{1}; 
-  frc::PWMSparkMax m_MotorRight{2};
+  frc::PWMSparkMax m_motor_left{1}; 
+  frc::PWMSparkMax m_motor_right{2};
 
   // drive base defining 
-  frc::DifferentialDrive m_drive{m_MotorLeft,m_MotorRight};
+  frc::DifferentialDrive m_drive{m_motor_left,m_motor_right};
   
   // defining aracde drive
   double max_forward_speed = 0.8; // maximum speed for forward & backward movement in drive
