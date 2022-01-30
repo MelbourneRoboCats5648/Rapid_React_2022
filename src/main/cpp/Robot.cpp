@@ -28,6 +28,7 @@ void Robot::RobotInit() {
  * LiveWindow and SmartDashboard integrated updating.
  */
 void Robot::RobotPeriodic() {
+
 }
 
 /**
@@ -65,12 +66,23 @@ void Robot::AutonomousPeriodic() {
 
 void Robot::TeleopInit() {}
 
-void Robot::TeleopPeriodic() {}
+void Robot::TeleopPeriodic() { // repeated throughout 
+  // arcade drive motor control
+
+  // controls forward & backward movement
+  double forward_input = m_controller.GetLeftY() * max_forward_speed;
+  //controls spin movement 
+  double spin_input = m_controller.GetRightX() * max_spin_speed;
+  // contolling arcade drive
+  m_drive.ArcadeDrive(forward_input,spin_input);
+
+}
 
 void Robot::DisabledInit() {}
 
 void Robot::DisabledPeriodic() {}
 
+// testing stuff
 void Robot::TestInit() {}
 
 void Robot::TestPeriodic() {}
