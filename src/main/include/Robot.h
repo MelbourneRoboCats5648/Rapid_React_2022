@@ -11,6 +11,7 @@
 #include <frc/XboxController.h>
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/motorcontrol/PWMSparkMax.h>
+#include <frc/Encoder.h>
 
 class Robot : public frc::TimedRobot {
  public:
@@ -40,7 +41,11 @@ class Robot : public frc::TimedRobot {
   // setting up vector motor controllers (driving)
   frc::PWMSparkMax m_motor_left{1}; 
   frc::PWMSparkMax m_motor_right{2};
+  frc::Encoder m_encoder_left{0,1};
+  frc::Encoder m_encoder_right{2,3};
 
+  bool m_going_forward;
+  
   // drive base defining 
   frc::DifferentialDrive m_drive{m_motor_left,m_motor_right};
   

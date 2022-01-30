@@ -75,11 +75,24 @@ void Robot::TeleopPeriodic() { // repeated throughout
   double forward_input = m_controller.GetLeftY() * max_forward_speed;
   //controls spin movement 
   double spin_input = m_controller.GetRightX() * max_spin_speed;
-  // contolling arcade drive
-  m_drive.ArcadeDrive(forward_input,spin_input);
+  // controlling arcade drive
+  if (spin_input == 0)
+  {
+    // TODO: check flag here
+    double error = (m_encoder_right.GetDistance() - m_encoder_left.GetDistance())/(m_encoder_left.GetDistance()+m_encoder_right.GetDistance());
+    m_drive.ArcadeDrive(forward_input,error);
+    m_encoder_right.Reset();
+    m_encoder_left.Reset();
+    m_going_forward = true;
+  }
+  else
+   {m_drive.ArcadeDrive(forward_input,spin_input);
+   m_going_forward = false; }
 
-  // if xbox button is pressed, stop everything
-  EmergencyStop();
+
+  // if xbox button is pressed, stop everything 
+  // TODO check if button 10 is actually the xbox guide button
+  if (m_controller.GetRawButtonPressed(10)) {EmergencyStop();}
 
 }
 
