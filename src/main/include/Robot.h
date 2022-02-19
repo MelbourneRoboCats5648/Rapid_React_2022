@@ -38,6 +38,9 @@ class Robot : public frc::TimedRobot {
   void EmergencyStop();
   void Drive();
   void GoStraight(double forwardSpeed);
+  void Climb();
+  void Ball_Intake(double ball_intake_speed);
+  
   // probably sending info to game controller centre
   frc::SendableChooser<std::string> m_chooser;
   const std::string kAutoNameDefault = "Default";
@@ -57,6 +60,19 @@ class Robot : public frc::TimedRobot {
   frc::PWMTalonSRX motor_shooting_low {0};
   frc::PWMTalonSRX motor_shooting_high {0};
 
+  /*
+  m_motor_left
+  m_motor_right
+  m_encoder_left
+  m_encoder_right
+  motor_climb_up 
+  motor_climb_down 
+  motor_ball_intake 
+  motor_shooting_low
+  motor_shooting_high
+
+  */
+
 
   bool m_going_forward;
   
@@ -66,4 +82,7 @@ class Robot : public frc::TimedRobot {
   // defining aracde drive
   double max_forward_speed = 0.8; // maximum speed for forward & backward movement in drive
   double max_spin_speed = 0.8; // maximum speed for spin movement
+
+  // defining speeds for mechs
+  double ball_intake_speed = 0.5; //ball intake speed (button A)
 };
