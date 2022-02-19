@@ -16,7 +16,7 @@ c++
 -g
 -nostdinc
 -I
-/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/RapidReact/src/main/include
+/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/src/main/include
 -I
 /Users/olivialee/.gradle/caches/transforms-3/9f847a04d0272124811466d9994322c1/transformed/wpilibNewCommands-cpp-2022.2.1-headers
 -I

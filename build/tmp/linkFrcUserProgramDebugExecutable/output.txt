@@ -1,4 +1,4 @@
-See file:///Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/RapidReact/build/tmp/linkFrcUserProgramDebugExecutable/output.txt for all output for linkFrcUserProgramDebugExecutable.
+See file:///Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/build/tmp/linkFrcUserProgramDebugExecutable/output.txt for all output for linkFrcUserProgramDebugExecutable.
 linking frcUserProgram successful.
 
-Finished linkFrcUserProgramDebugExecutable, see full log file:///Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/RapidReact/build/tmp/linkFrcUserProgramDebugExecutable/output.txt.
+Finished linkFrcUserProgramDebugExecutable, see full log file:///Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/build/tmp/linkFrcUserProgramDebugExecutable/output.txt.

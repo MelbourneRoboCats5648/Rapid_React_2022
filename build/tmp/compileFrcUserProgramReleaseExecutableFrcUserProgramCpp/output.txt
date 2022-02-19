@@ -1,4 +1,4 @@
-See file:///Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/RapidReact/build/tmp/compileFrcUserProgramReleaseExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramReleaseExecutableFrcUserProgramCpp.
+See file:///Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/build/tmp/compileFrcUserProgramReleaseExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramReleaseExecutableFrcUserProgramCpp.
 compiling Robot.cpp successful.
 
-Finished compileFrcUserProgramReleaseExecutableFrcUserProgramCpp, see full log file:///Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/RapidReact/build/tmp/compileFrcUserProgramReleaseExecutableFrcUserProgramCpp/output.txt.
+Finished compileFrcUserProgramReleaseExecutableFrcUserProgramCpp, see full log file:///Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/build/tmp/compileFrcUserProgramReleaseExecutableFrcUserProgramCpp/output.txt.

@@ -13,6 +13,12 @@
 #include <frc/motorcontrol/PWMSparkMax.h>
 #include <frc/Encoder.h>
 
+// importing,motors for mechanisms 
+#include <frc/motorcontrol/PWMTalonSRX.h>
+
+
+
+  
 class Robot : public frc::TimedRobot {
  public:
   // defining methods/functions
@@ -45,6 +51,12 @@ class Robot : public frc::TimedRobot {
   frc::PWMSparkMax m_motor_right{2};
   frc::Encoder m_encoder_left{0,1};
   frc::Encoder m_encoder_right{2,3};
+  frc::PWMTalonSRX motor_climb_up {0};
+  frc::PWMTalonSRX motor_climb_down {0};
+  frc::PWMTalonSRX motor_ball_intake {0};
+  frc::PWMTalonSRX motor_shooting_low {0};
+  frc::PWMTalonSRX motor_shooting_high {0};
+
 
   bool m_going_forward;
   
