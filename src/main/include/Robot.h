@@ -30,6 +30,8 @@ class Robot : public frc::TimedRobot {
  //defining variable internal to robot --> (private)
  private:
   void EmergencyStop();
+  void Drive();
+  void GoStraight(double forwardSpeed);
   // probably sending info to game controller centre
   frc::SendableChooser<std::string> m_chooser;
   const std::string kAutoNameDefault = "Default";

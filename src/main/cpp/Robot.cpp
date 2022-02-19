@@ -69,31 +69,72 @@ void Robot::AutonomousPeriodic() {
 void Robot::TeleopInit() {}
 
 void Robot::TeleopPeriodic() { // repeated throughout 
+  
   // arcade drive motor control
+  Drive();
+  
 
-  // controls forward & backward movement
+
+  // determine EStop button
+  // if (m_controller.GetRawButtonPressed(10)) {EmergencyStop();}
+
+}
+
+// Gets left hand and right hand joystick input to control the drive base
+// If not trying to turn, will use drive encoders to make the robot go straight
+void Robot::Drive()
+{
+  // Controls forward & backward movement using the left hand joystick
+  // limited to a max speed by max_forward_speed setting
   double forward_input = m_controller.GetLeftY() * max_forward_speed;
-  //controls spin movement 
+
+  // Controls spin movement using the right hand joystick
+  // limited to a max speed by max_spin_speed
   double spin_input = m_controller.GetRightX() * max_spin_speed;
-  // controlling arcade drive
+
+  // if we are not trying to turn, we can start using encoders to make the robot go straight
   if (spin_input == 0)
   {
-    // TODO: check flag here
-    double error = (m_encoder_right.GetDistance() - m_encoder_left.GetDistance())/(m_encoder_left.GetDistance()+m_encoder_right.GetDistance());
-    m_drive.ArcadeDrive(forward_input,error);
-    m_encoder_right.Reset();
-    m_encoder_left.Reset();
+    // if m_going_forward is false, we were previously turning and need to zero encoders: continue driving as usual but do not use encoders
+    // if m_going_forward is true, we have been going straight, use encoder assistance to GoStraight
+    if (m_going_forward == false)
+    {
+      // reset encoders to zero
+      m_encoder_right.Reset();
+      m_encoder_left.Reset();
+      // drive
+      m_drive.ArcadeDrive(forward_input, 0);
+    }
+    else {
+      GoStraight(forward_input);
+    }
+    // we are trying to go straight, set m_going_forward to true
     m_going_forward = true;
   }
   else
-   {m_drive.ArcadeDrive(forward_input,spin_input);
-   m_going_forward = false; }
+  {
+     m_drive.ArcadeDrive(forward_input,spin_input);
+     m_going_forward = false;
+  }
+}
 
-
-  // if xbox button is pressed, stop everything 
-  // TODO check if button 10 is actually the xbox guide button
-  if (m_controller.GetRawButtonPressed(10)) {EmergencyStop();}
-
+// Drive straight
+void Robot::GoStraight(double forwardSpeed)
+{
+    // get encoder measurements since last check
+    double rightEncoderDistance = m_encoder_right.GetDistance();
+    double leftEncoderDistance = m_encoder_left.GetDistance();
+    // transform the difference between the left and right distances into a spin correction
+    // ASSUMING the difference is small between left and right (i.e., 3-4 ticks) 
+    // "right / left" will be a value between [0, 2]
+    // "right / left - 1" will be a value between [-1, 1]
+    // if left distance is less than right distance, the spin correction will be positive (clockwise)
+    // if right distance is less than left distance, the spin correction will be negative (anticlockwise)
+    double spinCorrection = (rightEncoderDistance/leftEncoderDistance) - 1;
+    m_drive.ArcadeDrive(forwardSpeed, spinCorrection);
+    //reset encoders to zero
+    m_encoder_right.Reset();
+    m_encoder_left.Reset();
 }
 
 void Robot::DisabledInit() {}
@@ -104,14 +145,7 @@ void Robot::DisabledPeriodic() {}
 void Robot::TestInit() {}
 
 void Robot::TestPeriodic() {
-  if (m_controller.GetRawButtonPressed(9)) fmt::print("Button 9 is pressed\n");
-  if (m_controller.GetRawButtonPressed(10)) fmt::print("Button 10 is pressed\n");
-  if (m_controller.GetRawButtonPressed(11)) fmt::print("Button 11 is pressed\n");
-  if (m_controller.GetRawButtonPressed(12)) fmt::print("Button 12 is pressed\n");
-  if (m_controller.GetRawButtonPressed(13)) fmt::print("Button 13 is pressed\n");
-  if (m_controller.GetRawButtonPressed(14)) fmt::print("Button 14 is pressed\n");
-  if (m_controller.GetRawButtonPressed(15)) fmt::print("Button 15 is pressed\n");
-  if (m_controller.GetRawButtonPressed(16)) fmt::print("Button 16 is pressed\n");
+  
   }
 
 
