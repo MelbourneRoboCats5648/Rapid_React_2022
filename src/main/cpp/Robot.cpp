@@ -10,7 +10,6 @@
 
 
 void Robot::EmergencyStop() {
-  // stops all motors from moving 
   m_motor_left.Set(0);
   m_motor_right.Set(0);
   motor_climb_up.Set(0);
@@ -18,7 +17,8 @@ void Robot::EmergencyStop() {
   motor_ball_intake.Set(0);
   motor_shooting_low.Set(0);
   motor_shooting_high.Set(0);
-}
+  }
+  
 
 void Robot::RobotInit() {
   m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
@@ -81,10 +81,18 @@ void Robot::TeleopInit() {}
 void Robot::TeleopPeriodic() { // repeated throughout 
   
   // arcade drive motor control
-  Drive();
-  Climb (climb_motor_speed);
-  Ball_Intake(ball_intake_speed);
-  Ball_Shooting(shooting_low_speed, shooting_high_speed);
+  // if not stop run everything else
+  if (m_controller.GetStartButtonPressed() || m_controller.GetBackButtonPressed()){ 
+    // if the two small buttons in the middle of the x box controller are pressed stop everything
+    EmergencyStop();
+  }
+  else{
+    Drive();
+    Climb (climb_motor_speed);
+    Ball_Intake(ball_intake_speed);
+    Ball_Shooting(shooting_low_speed, shooting_high_speed);
+  }
+
 
 
   // determine EStop button
