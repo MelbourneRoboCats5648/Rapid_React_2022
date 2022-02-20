@@ -90,11 +90,8 @@ void Robot::AutonomousPeriodic() {
 
     // shooting
     Ball_Shooting(shooting_low_speed, shooting_high_speed);
-
     
     } 
-  
-
     
 }
 

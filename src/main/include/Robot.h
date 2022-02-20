@@ -52,15 +52,19 @@ class Robot : public frc::TimedRobot {
   frc::XboxController m_controller{0}; //defining xbox controller (port 0)
 
   // setting up vector motor controllers (driving)
-  frc::PWMSparkMax m_motor_left{1}; 
-  frc::PWMSparkMax m_motor_right{2};
+
+  // PWM wiring
+  frc::PWMSparkMax m_motor_left{0}; 
+  frc::PWMTalonSRX motor_climb_up {5};
+  frc::PWMTalonSRX motor_climb_down {6};
+  frc::PWMTalonSRX motor_ball_intake {7};
+  frc::PWMSparkMax m_motor_right{8};
+  frc::PWMTalonSRX motor_shooting_low {0}; //???
+  frc::PWMTalonSRX motor_shooting_high {0}; //???
+
+  // DIO Wiring
   frc::Encoder m_encoder_left{0,1};
-  frc::Encoder m_encoder_right{2,3};
-  frc::PWMTalonSRX motor_climb_up {0};
-  frc::PWMTalonSRX motor_climb_down {0};
-  frc::PWMTalonSRX motor_ball_intake {0};
-  frc::PWMTalonSRX motor_shooting_low {0};
-  frc::PWMTalonSRX motor_shooting_high {0};
+  frc::Encoder m_encoder_right{5,6};
   frc::DigitalOutput solenoid {9};
 
   /*
