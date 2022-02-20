@@ -13,6 +13,7 @@
 #include <frc/motorcontrol/PWMSparkMax.h>
 #include <frc/Encoder.h>
 #include <frc/GenericHID.h>
+#include <frc/DigitalOutput.h>
 // importing,motors for mechanisms 
 #include <frc/motorcontrol/PWMTalonSRX.h>
 
@@ -60,6 +61,7 @@ class Robot : public frc::TimedRobot {
   frc::PWMTalonSRX motor_ball_intake {0};
   frc::PWMTalonSRX motor_shooting_low {0};
   frc::PWMTalonSRX motor_shooting_high {0};
+  frc::DigitalOutput solenoid {9};
 
   /*
   m_motor_left

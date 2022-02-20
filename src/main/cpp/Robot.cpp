@@ -50,6 +50,7 @@ void Robot::RobotPeriodic() {
  * make sure to add them to the chooser code above as well.
  */
 void Robot::AutonomousInit() {
+  // random stuff review later
   m_autoSelected = m_chooser.GetSelected();
   // m_autoSelected = SmartDashboard::GetString("Auto Selector",
   //     kAutoNameDefault);
@@ -60,6 +61,10 @@ void Robot::AutonomousInit() {
   } else {
     // Default Auto goes here
   }
+
+  //________________________________________________________________________________
+
+  solenoid.Set(true);
 }
 
 void Robot::AutonomousPeriodic() {
@@ -77,7 +82,9 @@ void Robot::TeleopPeriodic() { // repeated throughout
   
   // arcade drive motor control
   Drive();
+  Climb (climb_motor_speed);
   Ball_Intake(ball_intake_speed);
+  Ball_Shooting(shooting_low_speed, shooting_high_speed);
 
 
   // determine EStop button
