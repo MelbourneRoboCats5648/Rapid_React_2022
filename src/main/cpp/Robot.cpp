@@ -137,7 +137,7 @@ void Robot::Drive()
   double spin_input = m_controller.GetRightX() * max_spin_speed;
 
   // if we are not trying to turn, we can start using encoders to make the robot go straight
-  if (spin_input == 0)
+  if (forward_input == 0)
   {
     // if m_going_forward is false, we were previously turning and need to zero encoders: continue driving as usual but do not use encoders
     // if m_going_forward is true, we have been going straight, use encoder assistance to GoStraight
@@ -147,17 +147,17 @@ void Robot::Drive()
       m_encoder_right.Reset();
       m_encoder_left.Reset();
       // drive
-      m_drive.ArcadeDrive(forward_input, 0);
+      m_drive.ArcadeDrive(spin_input,0);
     }
     else {
-      GoStraight(forward_input);
+      GoStraight(spin_input);
     }
     // we are trying to go straight, set m_going_forward to true
     m_going_forward = true;
   }
   else
   {
-     m_drive.ArcadeDrive(forward_input,spin_input);
+     m_drive.ArcadeDrive(spin_input, forward_input);
      m_going_forward = false;
   }
 }
@@ -197,13 +197,13 @@ void Robot:: Climb(double climb_motor_speed){
 
   if (m_controller.GetPOV() == 0){  // if top of the cross button is pressed
   // ---> climb expands/goes up
-    motor_climb_up.Set(climb_motor_speed);
+    motor_climb_up.Set(climb_motor_speed/3.2);
     motor_climb_down.Set(climb_motor_speed);
   }
 
   else if(m_controller.GetPOV() == 180){    // if bottom of the cross button is pressed
     // ---> climb expands/goes down
-    motor_climb_up.Set(-climb_motor_speed);
+    motor_climb_up.Set(-climb_motor_speed/3.2);
     motor_climb_down.Set(-climb_motor_speed);
     }
   
