@@ -55,12 +55,13 @@ class Robot : public frc::TimedRobot {
 
   // PWM wiring
   frc::PWMSparkMax m_motor_left{0}; 
+  frc::PWMTalonSRX motor_shooting_high {1};
+  frc::PWMTalonSRX motor_ball_intake {2};
   frc::PWMTalonSRX motor_climb_up {5};
   frc::PWMTalonSRX motor_climb_down {6};
-  frc::PWMTalonSRX motor_ball_intake {7};
+  frc::PWMTalonSRX motor_shooting_low {7};
   frc::PWMSparkMax m_motor_right{8};
-  frc::PWMTalonSRX motor_shooting_low {0}; //???
-  frc::PWMTalonSRX motor_shooting_high {0}; //???
+   
 
   // DIO Wiring
   frc::Encoder m_encoder_left{0,1};
