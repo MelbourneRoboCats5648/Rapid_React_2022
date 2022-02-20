@@ -82,7 +82,20 @@ void Robot::AutonomousPeriodic() {
 
   // turn on the motors (start the code)
   GoStraight(autonomous_backward_speed);
+  double average_encoder_distance = (m_encoder_left.GetDistance() + m_encoder_right.GetDistance())/2.0;
+
+  // if the robot has travelled over the required distance stop robot
+  if (average_encoder_distance >= autonomous_distance_backward){
+    GoStraight(0); // stopping the robot from moving
+
+    // shooting
+    Ball_Shooting(shooting_low_speed, shooting_high_speed);
+
+    
+    } 
   
+
+    
 }
 
 void Robot::TeleopInit() {}
