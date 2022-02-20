@@ -130,11 +130,11 @@ void Robot::Drive()
 {
   // Controls forward & backward movement using the left hand joystick
   // limited to a max speed by max_forward_speed setting
-  double forward_input = m_controller.GetRightY()* max_forward_speed;
+  double forward_input = m_controller.GetLeftY()* max_forward_speed;
 
   // Controls spin movement using the right hand joystick
   // limited to a max speed by max_spin_speed
-  double spin_input = m_controller.GetLeftX() * max_spin_speed;
+  double spin_input = m_controller.GetRightX() * max_spin_speed;
 
   // if we are not trying to turn, we can start using encoders to make the robot go straight
   if (spin_input == 0)

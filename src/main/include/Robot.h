@@ -91,7 +91,7 @@ class Robot : public frc::TimedRobot {
   // driving straight w/ encoders variables
   double error = 0;
   double steering = 0;
-  double correction_factor = 0.15; // this refers to a proportion of the error
+  double correction_factor = 0.05; // this refers to a proportion of the error
   double max_turn_speed = 0.6; //maximum value that the robot can correct by
 
 };
