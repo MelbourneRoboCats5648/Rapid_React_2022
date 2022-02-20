@@ -26,7 +26,7 @@
       "/Users/olivialee/.gradle/caches/transforms-3/63caace82174c5691eec2bbff989cd89/transformed/cameraserver-cpp-2022.2.1-headers/",
       "/Users/olivialee/.gradle/caches/transforms-3/c7609f1a9be9e89e573cc7f94a4777f5/transformed/cscore-cpp-2022.2.1-headers/",
       "/Users/olivialee/.gradle/caches/transforms-3/a9feae68b682f8e1ffbd1c33619565d8/transformed/opencv-cpp-4.5.2-1-headers/",
-      "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/RapidReact/src/main/include/",
+      "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/src/main/include/",
       "/Users/olivialee/.gradle/caches/transforms-3/49b6886ac3fdddea4e2fe511fa070f9b/transformed/wpilibNewCommands-cpp-2022.2.1-sources/",
       "/Users/olivialee/.gradle/caches/transforms-3/63f78a78c2a5f7df8f689fe006eaae43/transformed/wpilibc-cpp-2022.2.1-sources/",
       "/Users/olivialee/.gradle/caches/transforms-3/f2502a2ecf48e38ed6267a1e103e76a5/transformed/ntcore-cpp-2022.2.1-sources/",
@@ -61,7 +61,7 @@
       "/Users/olivialee/.gradle/caches/transforms-3/63caace82174c5691eec2bbff989cd89/transformed/cameraserver-cpp-2022.2.1-headers/",
       "/Users/olivialee/.gradle/caches/transforms-3/c7609f1a9be9e89e573cc7f94a4777f5/transformed/cscore-cpp-2022.2.1-headers/",
       "/Users/olivialee/.gradle/caches/transforms-3/a9feae68b682f8e1ffbd1c33619565d8/transformed/opencv-cpp-4.5.2-1-headers/",
-      "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/RapidReact/src/main/include/"
+      "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/src/main/include/"
     ],
     "binaries": [
       {
@@ -70,7 +70,7 @@
           {
             "source": {
               "srcDirs": [
-                "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/RapidReact/src/main/cpp/"
+                "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/src/main/cpp/"
               ],
               "includes": [
                 "**/*.cpp",
@@ -80,7 +80,7 @@
             },
             "exportedHeaders": {
               "srcDirs": [
-                "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/RapidReact/src/main/include/"
+                "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/src/main/include/"
               ],
               "includes": [],
               "excludes": []
@@ -117,7 +117,7 @@
           "/Users/olivialee/.gradle/caches/transforms-3/63caace82174c5691eec2bbff989cd89/transformed/cameraserver-cpp-2022.2.1-headers/",
           "/Users/olivialee/.gradle/caches/transforms-3/c7609f1a9be9e89e573cc7f94a4777f5/transformed/cscore-cpp-2022.2.1-headers/",
           "/Users/olivialee/.gradle/caches/transforms-3/a9feae68b682f8e1ffbd1c33619565d8/transformed/opencv-cpp-4.5.2-1-headers/",
-          "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/RapidReact/src/main/include/"
+          "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/src/main/include/"
         ],
         "sharedLibrary": false,
         "executable": true
@@ -127,7 +127,7 @@
       {
         "source": {
           "srcDirs": [
-            "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/RapidReact/src/main/cpp/"
+            "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/src/main/cpp/"
           ],
           "includes": [
             "**/*.cpp",
@@ -159,7 +159,7 @@
       {
         "source": {
           "srcDirs": [
-            "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/RapidReact/src/main/include/"
+            "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/src/main/include/"
           ],
           "includes": [],
           "excludes": []
@@ -217,7 +217,7 @@
       "/Users/olivialee/.gradle/caches/transforms-3/63caace82174c5691eec2bbff989cd89/transformed/cameraserver-cpp-2022.2.1-headers/",
       "/Users/olivialee/.gradle/caches/transforms-3/c7609f1a9be9e89e573cc7f94a4777f5/transformed/cscore-cpp-2022.2.1-headers/",
       "/Users/olivialee/.gradle/caches/transforms-3/a9feae68b682f8e1ffbd1c33619565d8/transformed/opencv-cpp-4.5.2-1-headers/",
-      "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/RapidReact/src/main/include/",
+      "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/src/main/include/",
       "/Users/olivialee/.gradle/caches/transforms-3/49b6886ac3fdddea4e2fe511fa070f9b/transformed/wpilibNewCommands-cpp-2022.2.1-sources/",
       "/Users/olivialee/.gradle/caches/transforms-3/63f78a78c2a5f7df8f689fe006eaae43/transformed/wpilibc-cpp-2022.2.1-sources/",
       "/Users/olivialee/.gradle/caches/transforms-3/f2502a2ecf48e38ed6267a1e103e76a5/transformed/ntcore-cpp-2022.2.1-sources/",
@@ -252,7 +252,7 @@
       "/Users/olivialee/.gradle/caches/transforms-3/63caace82174c5691eec2bbff989cd89/transformed/cameraserver-cpp-2022.2.1-headers/",
       "/Users/olivialee/.gradle/caches/transforms-3/c7609f1a9be9e89e573cc7f94a4777f5/transformed/cscore-cpp-2022.2.1-headers/",
       "/Users/olivialee/.gradle/caches/transforms-3/a9feae68b682f8e1ffbd1c33619565d8/transformed/opencv-cpp-4.5.2-1-headers/",
-      "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/RapidReact/src/main/include/"
+      "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/src/main/include/"
     ],
     "binaries": [
       {
@@ -261,7 +261,7 @@
           {
             "source": {
               "srcDirs": [
-                "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/RapidReact/src/main/cpp/"
+                "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/src/main/cpp/"
               ],
               "includes": [
                 "**/*.cpp",
@@ -271,7 +271,7 @@
             },
             "exportedHeaders": {
               "srcDirs": [
-                "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/RapidReact/src/main/include/"
+                "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/src/main/include/"
               ],
               "includes": [],
               "excludes": []
@@ -307,7 +307,7 @@
           "/Users/olivialee/.gradle/caches/transforms-3/63caace82174c5691eec2bbff989cd89/transformed/cameraserver-cpp-2022.2.1-headers/",
           "/Users/olivialee/.gradle/caches/transforms-3/c7609f1a9be9e89e573cc7f94a4777f5/transformed/cscore-cpp-2022.2.1-headers/",
           "/Users/olivialee/.gradle/caches/transforms-3/a9feae68b682f8e1ffbd1c33619565d8/transformed/opencv-cpp-4.5.2-1-headers/",
-          "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/RapidReact/src/main/include/"
+          "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/src/main/include/"
         ],
         "sharedLibrary": false,
         "executable": true
@@ -317,7 +317,7 @@
       {
         "source": {
           "srcDirs": [
-            "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/RapidReact/src/main/cpp/"
+            "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/src/main/cpp/"
           ],
           "includes": [
             "**/*.cpp",
@@ -348,7 +348,7 @@
       {
         "source": {
           "srcDirs": [
-            "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/RapidReact/src/main/include/"
+            "/Users/olivialee/Documents/GitHub/RoboCats/Rapid_React_2022/src/main/include/"
           ],
           "includes": [],
           "excludes": []

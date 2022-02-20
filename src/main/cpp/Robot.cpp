@@ -13,6 +13,11 @@ void Robot::EmergencyStop() {
   // stops all motors from moving 
   m_motor_left.Set(0);
   m_motor_right.Set(0);
+  motor_climb_up.Set(0);
+  motor_climb_down.Set(0);
+  motor_ball_intake.Set(0);
+  motor_shooting_low.Set(0);
+  motor_shooting_high.Set(0);
 }
 
 void Robot::RobotInit() {
@@ -72,7 +77,7 @@ void Robot::TeleopPeriodic() { // repeated throughout
   
   // arcade drive motor control
   Drive();
-  
+  Ball_Intake(ball_intake_speed);
 
 
   // determine EStop button
@@ -86,7 +91,7 @@ void Robot::Drive()
 {
   // Controls forward & backward movement using the left hand joystick
   // limited to a max speed by max_forward_speed setting
-  double forward_input = m_controller.GetLeftY() * max_forward_speed;
+  double forward_input = m_controller.GetLeftY()* max_forward_speed;
 
   // Controls spin movement using the right hand joystick
   // limited to a max speed by max_spin_speed
@@ -136,6 +141,27 @@ void Robot::GoStraight(double forwardSpeed)
     m_encoder_right.Reset();
     m_encoder_left.Reset();
 }
+
+//________________________________________________________________________________________________________________________________
+void Robot:: Climb(){
+  motor_climb_up.Set(0);
+  motor_climb_down.Set(0);
+
+
+  
+}
+
+
+//________________________________________________________________________________________________________________________________
+void Robot:: Ball_Intake(double ball_intake_speed){
+
+  if (m_controller.GetAButton() == true){
+    motor_ball_intake.Set(ball_intake_speed);}
+  else {
+    motor_ball_intake.Set(0);
+    }
+}
+//________________________________________________________________________________________________________________________________
 
 void Robot::DisabledInit() {}
 
