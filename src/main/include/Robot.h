@@ -93,4 +93,16 @@ class Robot : public frc::TimedRobot {
   double climb_motor_speed = 0.5; // climb motor speed (only one bc should be the same speed)
 
   double distance_per_pulse = 11.9694680102; // circumfrance = 2πr,  r = 3inch --> in relation to drive wheels. circumfrance/ 4 = distance by pulse
+  double autonomous_backward_speed = -0.15; //make sure that this is NEGATIVE 
+
+  // autonomous distance
+  double autonomous_distance_backward = 100; //cm
+
+  // driving straight w/ encoders variables
+  double error = 0;
+  double steering = 0;
+  double correction_factor = 0.15; // this refers to a proportion of the error
+  double max_turn_speed = 0.6;
+
+
 };

@@ -67,6 +67,8 @@ void Robot::AutonomousInit() {
   solenoid.Set(true);
   m_encoder_right.SetDistancePerPulse(distance_per_pulse);
   m_encoder_left.SetDistancePerPulse(distance_per_pulse);
+  m_encoder_right.Reset();
+  m_encoder_left.Reset();
 }
 
 void Robot::AutonomousPeriodic() {
@@ -75,6 +77,11 @@ void Robot::AutonomousPeriodic() {
   } else {
     // Default Auto goes here
   }
+
+  // check items above what there use is
+
+  // turn on the motors (start the code)
+  GoStraight(autonomous_backward_speed);
   
 }
 
@@ -143,6 +150,29 @@ void Robot::Drive()
 // Drive straight
 void Robot::GoStraight(double forwardSpeed)
 {
+  // defining variables for different distances
+  double left_distance = m_encoder_left.GetDistance();
+  double right_distance =  m_encoder_right.GetDistance();
+
+  error = right_distance-left_distance; // error = difference btwn 2 distances
+
+  if (error == 0){
+    steering = 0; // this is straight continue on current trajectory 
+  }
+  else {
+    steering = error * correction_factor; // setting steering value to a portion of the error
+  }
+  
+  if (steering > max_turn_speed){
+    steering = max_turn_speed;
+  }
+  else if (steering < -max_turn_speed){
+    steering = -max_turn_speed;
+  }
+
+  
+  m_drive.ArcadeDrive(forwardSpeed, steering);
+  /*
     // get encoder measurements since last check
     double rightEncoderDistance = m_encoder_right.GetDistance();
     double leftEncoderDistance = m_encoder_left.GetDistance();
@@ -155,8 +185,8 @@ void Robot::GoStraight(double forwardSpeed)
     double spinCorrection = (rightEncoderDistance/leftEncoderDistance) - 1;
     m_drive.ArcadeDrive(forwardSpeed, spinCorrection);
     //reset encoders to zero
-    m_encoder_right.Reset();
-    m_encoder_left.Reset();
+    */
+
 }
 
 //________________________________________________________________________________________________________________________________
