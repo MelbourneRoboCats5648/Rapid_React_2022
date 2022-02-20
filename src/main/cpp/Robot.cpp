@@ -65,6 +65,8 @@ void Robot::AutonomousInit() {
   //________________________________________________________________________________
 
   solenoid.Set(true);
+  m_encoder_right.SetDistancePerPulse(distance_per_pulse);
+  m_encoder_left.SetDistancePerPulse(distance_per_pulse);
 }
 
 void Robot::AutonomousPeriodic() {

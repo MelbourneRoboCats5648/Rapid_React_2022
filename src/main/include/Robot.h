@@ -91,4 +91,6 @@ class Robot : public frc::TimedRobot {
   double shooting_low_speed = 0.5; //ball intake speed (button B) shared & synced with shooting high
   double shooting_high_speed = 0.5; //ball intake speed (button B)shared & synced with shooting low
   double climb_motor_speed = 0.5; // climb motor speed (only one bc should be the same speed)
+
+  double distance_per_pulse = 3.81;
 };
