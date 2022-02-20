@@ -92,5 +92,5 @@ class Robot : public frc::TimedRobot {
   double shooting_high_speed = 0.5; //ball intake speed (button B)shared & synced with shooting low
   double climb_motor_speed = 0.5; // climb motor speed (only one bc should be the same speed)
 
-  double distance_per_pulse = 3.81;
+  double distance_per_pulse = 11.9694680102; // circumfrance = 2πr,  r = 3inch --> in relation to drive wheels. circumfrance/ 4 = distance by pulse
 };
