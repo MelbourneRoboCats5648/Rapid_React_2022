@@ -157,10 +157,22 @@ void Robot:: Ball_Intake(double ball_intake_speed){
 
   if (m_controller.GetAButton() == true){
     motor_ball_intake.Set(ball_intake_speed);}
-  else {
+  else { // stopping movement
     motor_ball_intake.Set(0);
     }
 }
+//________________________________________________________________________________________________________________________________
+
+void Robot:: Ball_Shooting(double shooting_low_speed, double shooting_high_speed){
+
+  if (m_controller.GetBButton() == true){
+    motor_shooting_low.Set(shooting_low_speed);
+    motor_shooting_high.Set(shooting_high_speed);}
+  else {// stopping movement
+    motor_shooting_low.Set(0);
+    motor_shooting_high.Set(0);}
+    
+  }
 //________________________________________________________________________________________________________________________________
 
 void Robot::DisabledInit() {}

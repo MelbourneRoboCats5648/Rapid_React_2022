@@ -12,7 +12,7 @@
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/motorcontrol/PWMSparkMax.h>
 #include <frc/Encoder.h>
-
+#include <frc/GenericHID.h>
 // importing,motors for mechanisms 
 #include <frc/motorcontrol/PWMTalonSRX.h>
 
@@ -40,6 +40,7 @@ class Robot : public frc::TimedRobot {
   void GoStraight(double forwardSpeed);
   void Climb();
   void Ball_Intake(double ball_intake_speed);
+  void Ball_Shooting(double shooting_low_speed, double shooting_high_speed);
   
   // probably sending info to game controller centre
   frc::SendableChooser<std::string> m_chooser;
@@ -85,4 +86,7 @@ class Robot : public frc::TimedRobot {
 
   // defining speeds for mechs
   double ball_intake_speed = 0.5; //ball intake speed (button A)
+  double shooting_low_speed = 0.5; //ball intake speed (button B) shared & synced with shooting high
+  double shooting_high_speed = 0.5; //ball intake speed (button B)shared & synced with shooting low
+
 };
