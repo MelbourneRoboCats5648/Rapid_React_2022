@@ -3,12 +3,11 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "Robot.h"
-
 #include <fmt/core.h>
-
 #include <frc/smartdashboard/SmartDashboard.h>
 
 
+// function for Emergancy Stop
 void Robot::EmergencyStop() {
   m_motor_left.Set(0);
   m_motor_right.Set(0);
@@ -20,6 +19,7 @@ void Robot::EmergencyStop() {
   }
   
 
+// Settig up the robt
 void Robot::RobotInit() {
   m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
   m_chooser.AddOption(kAutoNameCustom, kAutoNameCustom);
@@ -49,6 +49,9 @@ void Robot::RobotPeriodic() {
  * if-else structure below with additional strings. If using the SendableChooser
  * make sure to add them to the chooser code above as well.
  */
+
+//_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
 void Robot::AutonomousInit() {
   // random stuff review later
   m_autoSelected = m_chooser.GetSelected();
@@ -70,6 +73,8 @@ void Robot::AutonomousInit() {
   m_encoder_right.Reset();
   m_encoder_left.Reset();
 }
+
+//_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 void Robot::AutonomousPeriodic() {
   if (m_autoSelected == kAutoNameCustom) {
@@ -95,17 +100,20 @@ void Robot::AutonomousPeriodic() {
     
 }
 
+//_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
 void Robot::TeleopInit() {}
+
+//_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 void Robot::TeleopPeriodic() { // repeated throughout 
   
-  // arcade drive motor control
   // if not stop run everything else
   if (m_controller.GetStartButtonPressed() || m_controller.GetBackButtonPressed()){ 
     // if the two small buttons in the middle of the x box controller are pressed stop everything
     EmergencyStop();
   }
-  else{
+  else{ // arcade drive & mechs
     Drive();
     Climb (climb_motor_speed);
     Ball_Intake(ball_intake_speed);
@@ -113,14 +121,11 @@ void Robot::TeleopPeriodic() { // repeated throughout
   }
 
 
-
-  // determine EStop button
-  // if (m_controller.GetRawButtonPressed(10)) {EmergencyStop();}
-
 }
 
-// Gets left hand and right hand joystick input to control the drive base
-// If not trying to turn, will use drive encoders to make the robot go straight
+
+//_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
 void Robot::Drive()
 {
   // Controls forward & backward movement using the left hand joystick
@@ -157,7 +162,9 @@ void Robot::Drive()
   }
 }
 
-// Drive straight
+//________________________________________________________________________________________________________________________________
+
+// Drive straight using ENCODERS
 void Robot::GoStraight(double forwardSpeed)
 {
   // defining variables for different distances
@@ -182,20 +189,6 @@ void Robot::GoStraight(double forwardSpeed)
 
   
   m_drive.ArcadeDrive(forwardSpeed, steering);
-  /*
-    // get encoder measurements since last check
-    double rightEncoderDistance = m_encoder_right.GetDistance();
-    double leftEncoderDistance = m_encoder_left.GetDistance();
-    // transform the difference between the left and right distances into a spin correction
-    // ASSUMING the difference is small between left and right (i.e., 3-4 ticks) 
-    // "right / left" will be a value between [0, 2]
-    // "right / left - 1" will be a value between [-1, 1]
-    // if left distance is less than right distance, the spin correction will be positive (clockwise)
-    // if right distance is less than left distance, the spin correction will be negative (anticlockwise)
-    double spinCorrection = (rightEncoderDistance/leftEncoderDistance) - 1;
-    m_drive.ArcadeDrive(forwardSpeed, spinCorrection);
-    //reset encoders to zero
-    */
 
 }
 
@@ -219,8 +212,6 @@ void Robot:: Climb(double climb_motor_speed){
     motor_climb_down.Set(0);
     }
   }
-  
-
 
 //________________________________________________________________________________________________________________________________
 void Robot:: Ball_Intake(double ball_intake_speed){
@@ -254,9 +245,7 @@ void Robot::TestInit() {}
 
 void Robot::TestPeriodic() {
   
-  }
-
-
+}
 
 //_____________________________________________________________
 #ifndef RUNNING_FRC_TESTS

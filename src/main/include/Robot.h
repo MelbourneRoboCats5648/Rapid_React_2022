@@ -62,27 +62,12 @@ class Robot : public frc::TimedRobot {
   frc::PWMTalonSRX motor_shooting_low {7};
   frc::PWMSparkMax m_motor_right{8};
    
-
   // DIO Wiring
   frc::Encoder m_encoder_left{0,1};
   frc::Encoder m_encoder_right{5,6};
   frc::DigitalOutput solenoid {9};
 
-  /*
-  m_motor_left
-  m_motor_right
-  m_encoder_left
-  m_encoder_right
-  motor_climb_up 
-  motor_climb_down 
-  motor_ball_intake 
-  motor_shooting_low
-  motor_shooting_high
-
-  */
-
-
-  bool m_going_forward;
+  bool m_going_forward;// flag to indicate the state that the encoder is currently in 
   
   // drive base defining 
   frc::DifferentialDrive m_drive{m_motor_left,m_motor_right};
@@ -107,7 +92,6 @@ class Robot : public frc::TimedRobot {
   double error = 0;
   double steering = 0;
   double correction_factor = 0.15; // this refers to a proportion of the error
-  double max_turn_speed = 0.6;
-
+  double max_turn_speed = 0.6; //maximum value that the robot can correct by
 
 };
