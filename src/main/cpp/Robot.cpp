@@ -143,13 +143,26 @@ void Robot::GoStraight(double forwardSpeed)
 }
 
 //________________________________________________________________________________________________________________________________
-void Robot:: Climb(){
-  motor_climb_up.Set(0);
-  motor_climb_down.Set(0);
+void Robot:: Climb(double climb_motor_speed){
 
+  if (m_controller.GetPOV() == 0){  // if top of the cross button is pressed
+  // ---> climb expands/goes up
+    motor_climb_up.Set(climb_motor_speed);
+    motor_climb_down.Set(-climb_motor_speed);
+  }
 
+  else if(m_controller.GetPOV() == 180){    // if bottom of the cross button is pressed
+    // ---> climb expands/goes down
+    motor_climb_up.Set(-climb_motor_speed);
+    motor_climb_down.Set(climb_motor_speed);
+    }
   
-}
+  else{
+    motor_climb_up.Set(0);
+    motor_climb_down.Set(0);
+    }
+  }
+  
 
 
 //________________________________________________________________________________________________________________________________

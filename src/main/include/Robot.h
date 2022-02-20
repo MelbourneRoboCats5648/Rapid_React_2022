@@ -38,7 +38,7 @@ class Robot : public frc::TimedRobot {
   void EmergencyStop();
   void Drive();
   void GoStraight(double forwardSpeed);
-  void Climb();
+  void Climb(double climb_motor_speed);
   void Ball_Intake(double ball_intake_speed);
   void Ball_Shooting(double shooting_low_speed, double shooting_high_speed);
   
@@ -88,5 +88,5 @@ class Robot : public frc::TimedRobot {
   double ball_intake_speed = 0.5; //ball intake speed (button A)
   double shooting_low_speed = 0.5; //ball intake speed (button B) shared & synced with shooting high
   double shooting_high_speed = 0.5; //ball intake speed (button B)shared & synced with shooting low
-
+  double climb_motor_speed = 0.5; // climb motor speed (only one bc should be the same speed)
 };
