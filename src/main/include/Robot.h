@@ -16,6 +16,7 @@
 #include <frc/DigitalOutput.h>
 // importing,motors for mechanisms 
 #include <frc/motorcontrol/PWMTalonSRX.h>
+#include "cameraserver/CameraServer.h"
 
 
 
@@ -41,7 +42,9 @@ class Robot : public frc::TimedRobot {
   void GoStraight(double forwardSpeed);
   void Climb(double climb_motor_speed);
   void Ball_Intake(double ball_intake_speed);
+  void Ball_Shooting(double shooting_low_speed, double shooting_high_speed, double individual_low_speed, double individual_high_speed);
   void Ball_Shooting(double shooting_low_speed, double shooting_high_speed);
+  
   
   // probably sending info to game controller centre
   frc::SendableChooser<std::string> m_chooser;
@@ -73,14 +76,16 @@ class Robot : public frc::TimedRobot {
   frc::DifferentialDrive m_drive{m_motor_left,m_motor_right};
   
   // defining aracde drive
-  double max_forward_speed = 0.8; // maximum speed for forward & backward movement in drive
-  double max_spin_speed = 0.8; // maximum speed for spin movement
+  double max_forward_speed = 0.9; // maximum speed for forward & backward movement in drive
+  double max_spin_speed = 0.7; // maximum speed for spin movement
 
   // defining speeds for mechs
   double ball_intake_speed = 0.5; //ball intake speed (button A)
-  double shooting_low_speed = 0.8; //ball intake speed (button B) shared & synced with shooting high
-  double shooting_high_speed = -0.9; //ball intake speed (button B)shared & synced with shooting low
+  double shooting_low_speed = 1; //ball intake speed (button B) shared & synced with shooting high
+  double shooting_high_speed = -1; //ball intake speed (button B)shared & synced with shooting low
   double climb_motor_speed = 0.5; // climb motor speed (only one bc should be the same speed)
+  double shooting_low_speed_for_x = 0.5; //lower ball shooting speed (not linked to high motor)
+  double shooting_high_speed_for_y = -1; //high ball shooting speed (not linked to low motor)
 
   double distance_per_pulse = 11.9694680102; // circumfrance = 2πr,  r = 3inch --> in relation to drive wheels. circumfrance/ 4 = distance by pulse
   double autonomous_backward_speed = -0.15; //make sure that this is NEGATIVE 

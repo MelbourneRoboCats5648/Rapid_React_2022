@@ -24,6 +24,8 @@ void Robot::RobotInit() {
   m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
   m_chooser.AddOption(kAutoNameCustom, kAutoNameCustom);
   frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
+  cs::UsbCamera usbCamera = frc::CameraServer::StartAutomaticCapture();
+  usbCamera.SetResolution(640, 480);
 }
 
 /**
@@ -88,7 +90,7 @@ void Robot::AutonomousPeriodic() {
   // turn on the motors (start the code)
   GoStraight(autonomous_backward_speed);
   double average_encoder_distance = (m_encoder_left.GetDistance() + m_encoder_right.GetDistance())/2.0;
-
+  Ball_Shooting(0, shooting_high_speed_for_y);
   // if the robot has travelled over the required distance stop robot
   if (average_encoder_distance >= autonomous_distance_backward){
     GoStraight(0); // stopping the robot from moving
@@ -117,10 +119,17 @@ void Robot::TeleopPeriodic() { // repeated throughout
     Drive();
     Climb (climb_motor_speed);
     Ball_Intake(ball_intake_speed);
-    Ball_Shooting(shooting_low_speed, shooting_high_speed);
+    Ball_Shooting(shooting_low_speed, shooting_high_speed, shooting_low_speed_for_x, shooting_high_speed_for_y);
+
+    if (m_controller.GetPOV() == 90)
+    {
+        solenoid.Set(true);
+    }
+    else
+    {
+        solenoid.Set(false);
+    }
   }
-
-
 }
 
 
@@ -134,7 +143,7 @@ void Robot::Drive()
 
   // Controls spin movement using the right hand joystick
   // limited to a max speed by max_spin_speed
-  double spin_input = m_controller.GetRightX() * max_spin_speed;
+  double spin_input = -m_controller.GetRightX() * max_spin_speed; // Negative as direction inverted
 
   // if we are not trying to turn, we can start using encoders to make the robot go straight
   if (forward_input == 0)
@@ -195,21 +204,21 @@ void Robot::GoStraight(double forwardSpeed)
 //________________________________________________________________________________________________________________________________
 void Robot:: Climb(double climb_motor_speed){
 
-  if (m_controller.GetPOV() == 0){  // if top of the cross button is pressed
+  if (m_controller.GetPOV() == 0){  // if top of the cross button is pressed we move up
   // ---> climb expands/goes up
-    motor_climb_up.Set(climb_motor_speed/3.2);
-    motor_climb_down.Set(climb_motor_speed);
+    motor_climb_up.Set(-climb_motor_speed * 1.14);
+    motor_climb_down.Set(climb_motor_speed * 0.9);
   }
 
-  else if(m_controller.GetPOV() == 180){    // if bottom of the cross button is pressed
+  else if(m_controller.GetPOV() == 180){    // if bottom of the cross button is pressed we go down
     // ---> climb expands/goes down
-    motor_climb_up.Set(-climb_motor_speed/3.2);
-    motor_climb_down.Set(-climb_motor_speed);
+    motor_climb_up.Set(climb_motor_speed * 0.5);
+    motor_climb_down.Set(-climb_motor_speed * 3.6);
     }
   
   else{
-    motor_climb_up.Set(0);
-    motor_climb_down.Set(0);
+    motor_climb_up.Set(0);    // esc set to hold position
+    motor_climb_down.Set(0);  // esc set to hold position
     }
   }
 
@@ -222,18 +231,37 @@ void Robot:: Ball_Intake(double ball_intake_speed){
     motor_ball_intake.Set(0);
     }
 }
+
 //________________________________________________________________________________________________________________________________
 
-void Robot:: Ball_Shooting(double shooting_low_speed, double shooting_high_speed){
+void Robot:: Ball_Shooting(double shooting_low_speed, double shooting_high_speed, double individual_low_speed, double individual_high_speed){
 
-  if (m_controller.GetBButton() == true){
-    motor_shooting_low.Set(shooting_low_speed);
-    motor_shooting_high.Set(shooting_high_speed);}
-  else {// stopping movement
-    motor_shooting_low.Set(0);
-    motor_shooting_high.Set(0);}
-    
+  if (m_controller.GetBButton() == true)
+  {
+    Ball_Shooting(shooting_low_speed, shooting_high_speed);
   }
+  else if(m_controller.GetXButton() == true)
+  {
+    Ball_Shooting(individual_low_speed, 0);
+  }
+  else if(m_controller.GetYButton() == true)
+  {
+    Ball_Shooting(0, individual_high_speed);
+  }
+  else
+  {// stopping movement
+    Ball_Shooting(0, 0);
+  }
+    
+}
+
+void Robot::Ball_Shooting(double shooting_low_speed, double shooting_high_speed)
+{
+    motor_shooting_low.Set(shooting_low_speed);
+    motor_shooting_high.Set(shooting_high_speed);
+}
+
+ 
 //________________________________________________________________________________________________________________________________
 
 void Robot::DisabledInit() {}
